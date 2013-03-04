@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+
+source $BIN_DIR/utils
+
+####################################################
+# Helper functions for installing geo libraries    #
+####################################################
+
+function geo-url {
+    echo "https://s3.amazonaws.com/heroku-geodjango/$1"
+}
+
+function check-geo-library {
+    if [ ! -f $BUILD_DIR/geo-python.txt ]; then
+        return 1
+    fi
+    grep "^$1\$" $BUILD_DIR/geo-python.txt > /dev/null 2>&1
+}
+
+function fetch-geo-library {
+    name=$1
+    file=$2
+    current=`pwd`
+
+    if [ ! -d $CACHE_DIR/$name ]; then
+        mkdir -p $CACHE_DIR/$name
+        cd $CACHE_DIR/$name 
+
+        echo "Fetching ..." | indent 
+        curl -O $(geo-url $file)  >/dev/null 2>&1
+
+        echo "Unpacking ..." | indent
+        tar -xf $file
+        rm $file
+        rm -rf ./share
+    fi
+
+    # Create set-aside folder and copy the downloaded package over for
+    # distribution
+    mkdir -p $BUILD_DIR/vendor
+
+    echo "Installing ..." | indent
+    if [ ! -d $BUILD_DIR/vendor/$name ]; then
+        cp -r $CACHE_DIR/$name $BUILD_DIR/vendor/$name
+    fi
+
+    cd $current
+}
+
+####################
+# Installing Proj4 #
+####################
+
+if (check-geo-library "proj4") then
+    puts-step "Found geo dependency: Proj4 4.8"
+    fetch-geo-library "proj-4.8" "proj-4.8-heroku.tgz"
+fi
+
+###########################################
+# Installing Proj4 with datumgrid enabled #
+###########################################
+
+if (check-geo-library "proj4-datumgrid") then
+    puts-step "Found geo dependency: Proj4-datumgrid 4.8"
+    fetch-geo-library "proj-4.8" "proj-4.8-datumgrid-heroku.tgz"
+fi
+
+####################
+# Installing GEOS  #
+####################
+
+if (check-geo-library "geos") then
+    puts-step "Found geo dependency: GEOS 3.3.5"
+    fetch-geo-library "geos-3.3" "geos-3.3-heroku.tgz"
+fi
+
+###################
+# Installing GDAL #
+###################
+
+if (check-geo-library "gdal") then
+    puts-step "Found geo dependency: GDAL 1.9.1" 
+    fetch-geo-library "gdal-1.9" "gdal-1.9-heroku.tgz"
+fi

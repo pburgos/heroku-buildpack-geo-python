@@ -10,7 +10,8 @@ MANAGE_FILE=${MANAGE_FILE:2}
 cat <<EOF
 ---
 config_vars:
-
+  LIBRARY_PATH: vendor/proj-4.8/lib:vendor/geos-3.3/lib:vendor/gdal-1.9/lib
+  LD_LIBRARY_PATH: vendor/proj-4.8/lib:vendor/geos-3.3/lib:vendor/gdal-1.9/lib
 EOF
 
 
