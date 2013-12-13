@@ -7,7 +7,7 @@ source $BIN_DIR/utils
 ####################################################
 
 function geo-url {
-    echo "https://s3.amazonaws.com/heroku-geodjango/$1"
+    echo "https://s3.amazonaws.com/heroku-python-geo/$1"
 }
 
 function check-geo-library {
@@ -53,7 +53,7 @@ function fetch-geo-library {
 
 if (check-geo-library "proj4") then
     puts-step "Found geo dependency: Proj4 4.8"
-    fetch-geo-library "proj-4.8" "proj-4.8-heroku.tgz"
+    fetch-geo-library "proj-4.8" "proj-4.8.0-1.tar.gz"
 fi
 
 ###########################################
@@ -80,5 +80,5 @@ fi
 
 if (check-geo-library "gdal") then
     puts-step "Found geo dependency: GDAL 1.9.1" 
-    fetch-geo-library "gdal-1.9" "gdal-1.9-heroku.tgz"
+    fetch-geo-library "gdal-1.9" "gdal-1.9.1-1.tar.gz"
 fi
