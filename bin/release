@@ -10,8 +10,8 @@ MANAGE_FILE=${MANAGE_FILE:2}
 cat <<EOF
 ---
 config_vars:
-  LIBRARY_PATH: vendor/proj-4.8/lib:vendor/gdal-1.9/lib
-  LD_LIBRARY_PATH: vendor/proj-4.8/lib:vendor/gdal-1.9/lib
+  LIBRARY_PATH: /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib
+  LD_LIBRARY_PATH: /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib 
 EOF
 
 
