@@ -30,7 +30,7 @@ function fetch-geo-library {
         curl -O $(geo-url $file)  >/dev/null 2>&1
 
         echo "Unpacking ..." | indent
-        tar -xf $file
+        tar -zxf $file
         rm $file
         rm -rf ./share
     fi
