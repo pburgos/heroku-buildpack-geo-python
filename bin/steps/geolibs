@@ -70,7 +70,7 @@ fi
 ####################
 
 if (check-geo-library "geos") then
-    puts-step "Found geo dependency: GEOS 3.3.5"
+    puts-step "Found geo dependency: GEOS 3.4.2"
     fetch-geo-library "geos-3.4.2" "geos-3.4.2-1.tar.gz"
 fi
 
