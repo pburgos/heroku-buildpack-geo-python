@@ -57,7 +57,7 @@ export PATH=$BUILD_DIR/.heroku/python/bin:$PATH
 export PYTHONUNBUFFERED=1
 export LANG=en_US.UTF-8
 export LIBRARY_PATH=/app/.heroku/vendor/lib
-export LD_LIBRARY_PATH=/app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/.heroku/vendor/lib
+export LD_LIBRARY_PATH=/app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/vendor/geos-3.4.2/lib:/app/.heroku/vendor/lib
 
 # Switch to the repo's context.
 cd $BUILD_DIR
@@ -176,7 +176,7 @@ set-env PATH '$HOME/.heroku/python/bin:$PATH'
 set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
 set-default-env LIBRARY_PATH /app/.heroku/vendor/lib
-set-default-env LD_LIBRARY_PATH /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/.heroku/vendor/lib
+set-default-env LD_LIBRARY_PATH /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/vendor/geos-3.4.2/lib:/app/.heroku/vendor/lib
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/vendor/gdal-1.9/lib/python2.7/site-packages:/app/
