@@ -12,6 +12,7 @@ cat <<EOF
 config_vars:
   LIBRARY_PATH: /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/vendor/geos-3.4.2/lib
   LD_LIBRARY_PATH: /app/vendor/proj-4.8/lib:/app/vendor/gdal-1.9/lib:/app/vendor/geos-3.4.2/lib 
+  GDAL_DATA: /app/vendor/gdal-1.9/share/gdal
 EOF
 
 
