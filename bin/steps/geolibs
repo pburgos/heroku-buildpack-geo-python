@@ -32,7 +32,8 @@ function fetch-geo-library {
         echo "Unpacking ..." | indent
         tar -zxf $file
         rm $file
-        rm -rf ./share
+        #Next line removed since prevent GDAL info be located gcs.csv
+        #rm -rf ./share
     fi
 
     # Create set-aside folder and copy the downloaded package over for
